@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "pulverize",
+	"version": "${version}",
+	"name": "pulverize",
+	"description": "Simple mod that turns stone / cobblestone into gravel and gravel into sand when thrown onto a pointed dripstone",
+	"authors": [
+		"SeanathonHooper"
+	],
+	"contact": {
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/pulverize/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "seanathonhooper.pulverize.Pulverize"
+		]
+	},
+	"mixins": [
+      "pulverize.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}
