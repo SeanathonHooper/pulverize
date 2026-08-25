@@ -1,6 +1,7 @@
 package seanathonhooper.pulverize.mixin;
 
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -26,9 +27,8 @@ public abstract class ItemEntityMixin {
             if (itemEntity.level().isClientSide()) return;
 
 
-            if (!itemEntity.getItem().is(Items.STONE) && !itemEntity.getItem().is(Items.GRAVEL) && !itemEntity.getItem().is(Items.COBBLESTONE)) return;
+            if (!itemEntity.getItem().is(Items.STONE) && !itemEntity.getItem().is(Items.GRAVEL) && !itemEntity.getItem().is(Items.COBBLESTONE) && !itemEntity.getItem().is(Items.GLASS)) return;
 
-            Pulverize.LOGGER.info("Survived item type check");
 
             BlockState state = itemEntity.level().getBlockState(itemEntity.getOnPos());
 
@@ -43,6 +43,11 @@ public abstract class ItemEntityMixin {
                     ItemStack newStack = new ItemStack(Items.SAND, oldStack.getCount());
                     itemEntity.setItem(newStack);
                 }
+                else if (itemEntity.getItem().is(Items.GLASS)){
+                    ItemStack newStack = new ItemStack(Items.SAND, oldStack.getCount());
+                    itemEntity.setItem(newStack);
+                }
+
 
                 isTransmuted = true;
             }
